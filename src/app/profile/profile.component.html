@@ -1,0 +1,63 @@
+<div fxFlex="50%">
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="profile-title">Profile Page</div>
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-img width=300 height=300 src="../assets/images/male.png">
+    <mat-card-content>
+      <div *ngIf="isLoggedIn(); else other_content">
+        <div>
+          <p>{{ greeting }} {{ userData?.firstName }} {{ userData?.lastName}} !</p>
+        </div>
+        <div class="not-you">
+          Not you?
+          <button mat-raised-button color="warn" (click)="logout()">Logout</button>
+        </div>
+      </div>
+      <ng-template #other_content>
+        <p class="profile-not-login">Hello, Guest, You are not logged in!</p>
+        <mat-card-actions class="login-link">
+          <a routerLink="/login">go to login</a>
+        </mat-card-actions>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div fxFlex="50%">
+  <mat-card class="purchase-card">
+    <mat-card-header>
+      <mat-card-title>
+        <div class="purchase-title">Purchase History</div>
+      </mat-card-title>
+    </mat-card-header>
+    <div [hidden]="!purchaseNotEmpty()">
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <ng-container matColumnDef="firstName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{ element.firstName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="timestamp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+            <td mat-cell *matCellDef="let element"> {{ element.timestamp.toDate() | date: 'short' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="rate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
+            <td mat-cell *matCellDef="let element"> {{ element.rate | currency }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[10,15]" showFirstLastButtons> </mat-paginator>
+      </div>
+    </div>
+    <div [hidden]="purchaseNotEmpty()">
+      <p>You have not bought anything before!</p>
+    </div>
+  </mat-card>
+</div>

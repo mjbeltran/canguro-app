@@ -1,0 +1,57 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add a nanny</mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="addForm" (ngSubmit)="tryAdd()">
+    <div class="form-group">
+      <mat-form-field>
+        <input type="text" matInput placeholder="first name" formControlName="firstName" required>
+        <mat-error *ngIf="submitted && af.firstName.errors?.required">First name is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <input type="text" matInput placeholder="last name" formControlName="lastName" required>
+        <mat-error *ngIf="submitted && af.lastName.errors?.required">Last name is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="age">
+        <input matInput type="number" min="17" placeholder="age" formControlName="age" required>
+        <mat-error *ngIf="submitted && af.age.errors?.required">Age is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="gender">
+        <mat-select placeholder="gender" formControlName="gender" required>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+        </mat-select>
+        <mat-error *ngIf="submitted && af.gender.errors?.required">Gender is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="location">
+        <input matInput type="text" placeholder="location" formControlName="location" required>
+        <mat-error *ngIf="submitted && af.location.errors?.required">Location is required</mat-error> 
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput type="number" placeholder="year of experience" formControlName="yearOfExp" min="0" required>
+        <mat-error *ngIf="submitted && af.yearOfExp.errors?.required">Years Of Experience is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput type="number" placeholder="rate" formControlName="rate" min="5" required>
+        <mat-error *ngIf="submitted && af.rate.errors?.required">Rate is required</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-card-actions>
+      <div class="submit-button">
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

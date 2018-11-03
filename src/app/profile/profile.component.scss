@@ -1,0 +1,57 @@
+.profile-card {
+    height: 100vh;
+}
+
+.purchase-card {
+    height: 100vh;
+}
+
+.profile-not-login {
+    color: lightcoral;
+    font-size: 1.2em;
+    padding-left: 8px;
+}
+
+.login-link  {
+    text-align: left;
+    font-size: 1.2em;
+    padding-left: 24px;
+}
+
+.profile-title {
+    font-size: 1.5em; 
+    color: darkgoldenrod;
+}
+
+.purchase-title {
+    font-size: 1.5em; 
+    color: darkgoldenrod;
+    display: block;
+}
+
+.not-you {
+    font-size: 1.0em;
+    padding-left: 10px;
+    display: block;
+}
+
+.not-you button {
+    margin-top: 20px;
+    margin-left: 25px;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+p {
+    text-align: left;
+    padding-left: 8px;
+    color: lightcoral;
+    font-size: 1.2em;
+    display: block;
+}

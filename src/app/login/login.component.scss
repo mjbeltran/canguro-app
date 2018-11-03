@@ -1,0 +1,44 @@
+.login-card {
+    max-width: 420px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.login-title {
+    font-size: 20px;
+    color: lightcoral;
+} 
+
+.login-button {
+    margin-left: 12px;
+}
+
+.register-link {
+    margin-left: 12px;
+    margin-bottom: 15px;
+}
+
+.forget-emailPass {
+    margin-left: 12px;
+}
+.errorLogin {
+    color: red;
+}
+
+.already-loggedIn {
+    // padding-top: 30px;
+    // padding-right: 10px;
+    // padding-bottom: 10px;
+    // padding-left: 30px;
+    height: 100vh;
+}
+
+.already-message {
+    padding-top: 30px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}

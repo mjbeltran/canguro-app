@@ -1,0 +1,50 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Add Nanny Page</mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="addForm">
+    <div class="form-group">
+      <mat-form-field>
+        <input type="text" matInput placeholder="first name" formControlName="firstName">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <input type="text" matInput placeholder="last name" formControlName="lastName">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="age">
+        <input matInput type="number" min="17" placeholder="age" formControlName="age">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="gender">
+        <mat-select placeholder="gender" formControlName="gender">
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="location">
+        <input matInput type="text" placeholder="location" formControlName="location">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput type="number" placeholder="year of experience" formControlName="yearOfExp">
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput type="number" placeholder="rate" formControlName="rate">
+      </mat-form-field>
+    </div>
+    <mat-card-actions>
+      <div class="edit-button">
+        <button mat-raised-button (click)="tryEdit(addForm.value)" color="primary">Update</button>
+      </div>
+    </mat-card-actions>
+  </form>
+</mat-card>

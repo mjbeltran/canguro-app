@@ -1,0 +1,18 @@
+p {
+    padding-bottom: 20px;
+}
+
+mat-card {
+    height: 100vh;
+}
+
+.button-row button{
+    margin-top: 20px;
+    margin-right: 8px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

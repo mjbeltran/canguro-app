@@ -1,0 +1,16 @@
+.contact{
+    display: flex;
+    flex-direction: column;
+}
+
+.contact > * {
+    width: 50%;
+}
+
+.contact form {
+    margin-bottom: 20px;
+}
+
+.contact form > * {
+    margin: 5px 0;
+}

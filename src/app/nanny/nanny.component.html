@@ -1,0 +1,45 @@
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row>
+
+    <button mat-button color="accent" (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card"
+      matTooltip="click to change to card view">
+      <mat-icon>view_module</mat-icon>Card View
+    </button>
+
+    <button mat-button color="accent" (click)="changeDisplayMode(displayModeEnum.List)" [class.active]="displayMode === displayModeEnum.List"
+      matTooltip="click to change to list view">
+      <mat-icon>list</mat-icon>List View
+    </button>
+
+    <button mat-button color="accent" [matMenuTriggerFor]="menu">
+      <mat-icon>sort</mat-icon>Sort
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="sort('location')">Location</button>
+      <button mat-menu-item (click)="sort('firstName')">First Name</button>
+      <button mat-menu-item (click)="sort('rate')">Price</button>
+    </mat-menu>
+
+    <div *ngIf="isAdminCheck">
+      <button matTooltip="click to add nanny" mat-button color="warn" (click)="addNanny()">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+
+    <mat-form-field class="searchForm" [formGroup]="searchForm">
+      <input type="text" formControlName="firstName" matInput placeholder="search by first name">
+      <button color="primary" matTooltip="click to search" mat-icon-button (click)="search(searchForm.value)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<app-nanny-card [hidden]="displayMode !== displayModeEnum.Card" [childNannies]="parentNannies" [userId]="userId"
+  [isAdminCheck]="isAdminCheck">
+</app-nanny-card>
+<app-nanny-list [hidden]="displayMode !== displayModeEnum.List" [childNannies]="parentNannies" [userId]="userId"
+  [isAdminCheck]="isAdminCheck">
+</app-nanny-list>

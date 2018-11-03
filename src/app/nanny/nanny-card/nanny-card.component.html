@@ -1,0 +1,80 @@
+<mat-card>
+  <div class="container" fxLayout="row">
+    <div fxFlex="50%">
+      <mat-card class="mat-card-nanny" *ngFor="let nanny of childNannies | paginate: { itemsPerPage: 6, currentPage: p, id: 'first'}">
+        <mat-card-header>
+          <mat-card-title>
+            <div>
+              <h3>{{nanny?.firstName}} {{nanny?.lastName}} <span [hidden]="!isAdminCheck">
+                  <button mat-icon-button color="warn" matTooltip="click to edit" (click)="edit(nanny)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button matTooltip="click to remove nanny" mat-icon-button (click)="removeNanny(nanny)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </span></h3>
+            </div>
+          </mat-card-title>
+          <mat-card-subtitle>baby carer</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="../../assets/images/{{nanny.gender | lowercase}}.png" />
+        <mat-card-content>
+          <div>
+            Gender: {{nanny?.gender}}
+          </div>
+          <div>
+            Year of Exp: {{nanny?.yearOfExp}}
+          </div>
+          <div>
+            Age: {{nanny?.age}}
+          </div>
+          <div>
+            Location: {{nanny?.location}}
+          </div>
+          <div>
+            Rate: {{nanny.rate | currency}} per hour
+          </div>
+          <div>
+            <app-rating [nannyId]="nanny?.uid" [userId]="userId"></app-rating>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="add-button">
+            <button mat-raised-button color="primary" (click)="add(nanny)">add to cart</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+      <pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
+    </div>
+    <div fxFlex="50%">
+      <mat-card class="card-view">
+        <mat-card-header>
+          <div class="cart-header">
+            <mat-icon>shopping_cart</mat-icon> Cart
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="cartNotEmpty(); else display_empty">
+            <mat-list role="list" class="mat-card-history">
+              <mat-list-item role="listitem" *ngFor="let hist of history">
+                {{hist?.firstName}} at {{hist?.rate | currency}}
+              </mat-list-item>
+              <mat-list-item>Total: {{ total | currency }} </mat-list-item>
+            </mat-list>
+
+            <div class="button-row">
+              <button mat-raised-button (click)="clear()">clear</button>
+              <button mat-raised-button color="primary" (click)="saveCart()">save cart</button>
+              <button mat-raised-button color="accent" (click)="purchase()">checkout</button>
+            </div>
+          </div>
+          <ng-template #display_empty>
+            <div>
+              <p> Your Cart Is Empty!</p>
+            </div>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-card>

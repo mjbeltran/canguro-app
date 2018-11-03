@@ -1,0 +1,27 @@
+.button-row button{
+  margin-right: 8px;
+}
+
+.shopping-cart button {
+  position: absolute;
+  right: 100px;
+  padding-right: 12px;
+  top: 20px;
+}
+
+.profile button {
+  position: absolute;
+  right: 160px; 
+  top: 22px;
+}
+
+mat-slide-toggle {
+  position: absolute;
+  right: 20px;
+}
+
+.theme-select button {
+  position: absolute;
+  right: 40px;
+  top: 20px;
+}

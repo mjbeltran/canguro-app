@@ -1,0 +1,25 @@
+<mat-card class="home-card">
+  <mat-card-header>
+    <mat-card-title>
+      <div class="home-title">Home page</div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      When your nanny is sick or suddenly you need to be somewhere and need someone to take care of you kids? <br>
+      Don't worry, this Baby Care Application let you choose your own nanny on the go! <br>
+      Right now we have {{ parentNannies.length }} nannies available!
+    </p>
+    <div class="link">
+      <a routerLink="/register">register now</a>
+    </div>
+    <p>
+      Estamos aquí:
+    </p>
+    <div>
+      <agm-map [latitude]="lat" [longitude]="lng" [mapDraggable]="false">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+    </div>
+  </mat-card-content>
+</mat-card>

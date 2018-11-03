@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <p>Register Page</p>
+    </mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="registerForm" (ngSubmit)="tryRegister()">
+    <div class="form-group">
+      <mat-form-field>
+        <input type="email" matInput placeholder="email" formControlName="email" required>
+        <mat-error *ngIf="submitted && f.email.errors?.required">Email is required</mat-error>
+        <mat-error *ngIf="submitted && f.email.errors.email">Email is invalid</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field>
+        <input matInput type="password" placeholder="password" formControlName="password" required>
+        <mat-error *ngIf="submitted && f.password.errors?.required">Password is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="firstName">
+        <input type="text" matInput placeholder="firstName" formControlName="firstName" required>
+        <mat-error *ngIf="submitted && f.firstName.errors?.required">FirstNmae is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field name="lastName">
+        <input type="text" matInput placeholder="lastName" formControlName="lastName" required>
+        <mat-error *ngIf="submitted && f.lastName.errors?.required">LastName is required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="submit-button">
+      <mat-card-actions>
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+      </mat-card-actions>
+    </div>
+  </form>
+</mat-card>

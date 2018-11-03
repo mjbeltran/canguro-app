@@ -1,0 +1,14 @@
+<div class="contact">
+  <form class="contact" [formGroup]="contact" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput placeholder="Message" formControlName="message"> </textarea>
+    </mat-form-field>
+    <button type="submit" [disabled]="contact.invalid" mat-button>Submit</button>
+  </form>
+</div>

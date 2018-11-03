@@ -1,0 +1,38 @@
+<div [ngClass]="theme">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <div class="button-row">
+                <button mat-icon-button routerLink="">
+                    <mat-icon>home</mat-icon>
+                </button>
+                <button mat-button (click)="goPlace('nanny')">Nanny</button>
+                <button mat-button (click)="goPlace('about')">About</button>
+                <button mat-button (click)="goPlace('login')" *ngIf="!isLoggedIn()">Login</button>
+                <button mat-button (click)="logout()" *ngIf="isLoggedIn()">Logout</button>
+
+            </div>
+            <div class="profile">
+                <button mat-button (click)="goPlace('profile')">
+                    <mat-icon>person</mat-icon>Profile
+                </button>
+            </div>
+            <div class="shopping-cart">
+                <button mat-icon-button matTooltip="cart" (click)="goPlace('cart')">
+                    <mat-icon matBadge="{{count}}" [matBadgeHidden]="count == 0" matBadgeColor="warn">shopping_cart</mat-icon>
+                </button>
+            </div>
+
+            <div class="theme-select">
+                <button mat-icon-button matTooltip="select a theme!" [matMenuTriggerFor]="menu">
+                    <mat-icon>color_lens</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="setColor('primary')">Primary</button>
+                    <button mat-menu-item (click)="setColor('dark-theme')">Dark</button>
+                    <button mat-menu-item (click)="setColor('light-theme')">Light</button>
+                </mat-menu>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</div>

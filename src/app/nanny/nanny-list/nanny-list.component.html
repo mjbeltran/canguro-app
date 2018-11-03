@@ -1,0 +1,63 @@
+<mat-card>
+  <div class="container" fxlayout="row">
+    <div fxFlex="45%">
+      <mat-list>
+        <mat-list-item *ngFor="let nanny of childNannies | paginate: { itemsPerPage: 4, currentPage: p}">
+          <h3 mat-line>
+            <div class="list-name">{{nanny?.firstName}} {{nanny?.lastName}} <span [hidden]="!isAdminCheck">
+                <button mat-icon-button color="warn" matTooltip="click to edit" (click)="edit(nanny)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button matTooltip="click to remove nanny" mat-icon-button (click)="removeNanny(nanny)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </span>
+            </div>
+          </h3>
+          <h4 mat-line>Gender: {{ nanny.gender }}</h4>
+          <h4 mat-line>Age: {{ nanny.age }} </h4>
+          <h4 mat-line>Year Of Exp: {{ nanny.yearOfExp }} </h4>
+          <h4 mat-line>Location: {{ nanny.location }} </h4>
+          <h4 mat-line>Rate" {{ nanny.rate | currency }} per hour</h4>
+          <h4 mat-line>
+            <app-rating [nannyId]="nanny?.uid" [userId]="userId"></app-rating>
+          </h4>
+          <div class="addToCartButton">
+            <button mat-raised-button color="primary" (click)="add(nanny)">add to cart</button>
+          </div>
+        </mat-list-item>
+      </mat-list>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div fxFlex="50%">
+      <mat-card class="list-card">
+        <mat-card-header>
+          <mat-card-title>
+            <div class="list-cart">
+              <mat-icon>shopping_cart</mat-icon>Cart
+            </div>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div *ngIf="cartNotEmpty(); else display_empty">
+            <mat-list role="list" class="mat-card-history">
+              <mat-list-item role="listitem" *ngFor="let hist of history"> {{hist?.firstName}} at {{ hist?.rate |
+                currency}}</mat-list-item>
+              <mat-list-item>Total: {{total | currency}}</mat-list-item>
+            </mat-list>
+            <div class="button-row">
+              <button mat-raised-button (click)="clear()">clear</button>
+              <button mat-raised-button color="primary" (click)="saveCart()">save cart</button>
+              <button mat-raised-button color="warn" (click)="purchase()">checkout</button>
+            </div>
+          </div>
+          <ng-template #display_empty>
+            <div>
+              <p>Your cart is empty</p>
+            </div>
+          </ng-template>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-card>
